@@ -1,0 +1,29 @@
+Assignment 1 - R Markdown and Leaflet
+========================================================
+## FP
+### 2023-05-19
+
+Instruction: Create a web page using R Markdown that features a map created with Leaflet. 
+
+For this task, we want to show you the capital city of Indonesia and near cities which combined as a metropolitan area of Jakarta (Jabodetabek). 
+
+
+## Source Code 
+
+Load relevant library
+```{r, message=FALSE}
+library(leaflet)
+library(dplyr)
+```
+
+
+```{r Leaflet, echo=TRUE}
+map <- leaflet() %>% addTiles() 
+map <- map %>% 
+  addMarkers(lat = -6.200000, lng = 106.816666, popup="Jakarta") %>%
+  addMarkers(lat = -6.595038, lng = 106.816635, popup="Bogor City") %>%
+  addMarkers(lat = -6.402905, lng = 106.778419, popup="Depok City") %>%
+  addMarkers(lat = -6.178306, lng = 106.631889, popup="Tangerang") %>%
+  addMarkers(lat = -6.241586, lng = 106.992416, popup="Bekasi")
+map
+```
