@@ -68,11 +68,11 @@ Here is a link to the application build in the shinyapps.io also github reposito
 
 **Application:**
 
-[To the application](https://fputra.shinyapps.io/myFirstApp/)
+[Shiny Apps](https://fputra.shinyapps.io/myFirstApp/)
 
 **Github Repository:**
 
-
+[Github Repo](https://github.com/fajarnputra/DevelopingDataProduct)
 
 **References:**
 
