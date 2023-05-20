@@ -1,0 +1,80 @@
+---
+title: "Project 3 Presentation"
+author: "FP"
+date: "2023-05-20"
+output: 
+  ioslides_presentation:
+      widescreen: TRUE
+      smaller: TRUE
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Apps Introduction {.smaller} 
+
+This application is intended helps user to get a glimpse of the how k-means clustering algorithm, **kmeans()** works in the data analysis process. Given a scatter plot of the data, we can examine how this algorithm determine the fittest cluster based on the x-y variables. Users can also customize the number of cluster to show how algorithm adjust input number of cluster. Summary of the dataset. Since scatterplot and kmeans() only worked with numerical variables, we selected relevant variable to be included in the analysis.
+```{r}
+vars <- setdiff(names(mtcars), c("drat", "qsec", "vs", "gear", "carb"))
+summary(mtcars[,vars])
+```
+
+## Snippet server.R
+For this file, we focus on the code of how the packages work and the mechanism to differentiate between cluster
+
+```{r pressure, eval=FALSE}
+ clusters <- reactive({
+    kmeans(selectedData(), input$clusters)
+  })
+  
+  output$plot1 <- renderPlot({
+    palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+              "#FF7F00", "#FFFF33", "#A65628", "#F781BF"))
+```
+
+The upper is the mechanism how the **kmeans()** load  the input from user while the lower is differentiate cluster by colors. Since only for exercises, maximum cluster available is only 8 consider the number of data samples. 
+
+server.r receive two variables that will be converted into scatter plot and cluster will show depends on the number of cluster selected.
+
+## Snippet ui.R
+The ui of the apps designed with sidebar. The sidebar panel is for received input from user.
+
+```{r eval=FALSE}
+headerPanel('Clustering Collection of Cars (Mtcars Dataset)'),
+  sidebarPanel(
+    selectInput('xcol', 'X Variable', vars),
+    selectInput('ycol', 'Y Variable', vars, selected = vars[[2]]),
+    numericInput('clusters', 'Cluster count', 4, min = 1, max = 8)
+  )
+```
+
+
+```{r eval=FALSE}
+mainPanel(
+    plotOutput('plot1'),
+  )
+```
+
+The main panel contains plot from the selected variables and also guidance on how to use apps. 
+
+## Link and Reference
+Here is a link to the application build in the shinyapps.io also github repository that contains code to build the apps. For the guidance of using the apps, there is a guidance on the apps for more information.
+
+**Application:**
+
+[To the application](https://fputra.shinyapps.io/myFirstApp/)
+
+**Github Repository:**
+
+
+
+**References:**
+
+[Examples of R Shiny Apps](https://github.com/rstudio/shiny-examples/tree/main/050-kmeans-example)
+

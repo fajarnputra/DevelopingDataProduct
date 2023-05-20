@@ -1,0 +1,13 @@
+name: myFirstApp
+title: myFirstApp
+username:
+account: fputra
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9134874
+bundleId: 7241456
+url: https://fputra.shinyapps.io/myFirstApp/
+when: 1684575037.66001
+lastSyncTime: 1684575037.66002
+asMultiple: FALSE
+asStatic: FALSE
