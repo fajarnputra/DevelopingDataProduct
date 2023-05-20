@@ -19,16 +19,15 @@ For this example we will try to show the previous analysis the relationship betw
 library(plotly)
 library(webshot)
 data(mtcars)
-mtcars$am <- as.factor(mtcars$am)
-levels(mtcars$am) <- c("Automatic", "Manual")
+mtcars$cyl <- as.factor(mtcars$cyl)
 ```
 
 ```{r}
 p1 <- plot_ly(
   data = mtcars,
   y = ~mpg,
-  x = ~am,
-  type = "box"
+  x = ~hp,
+  color = ~cyl
 )
 ```
 
